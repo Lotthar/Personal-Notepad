@@ -23,16 +23,16 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-2">
-                    <button type="button" class="btn btn-danger nav-btn">New Pad</button>
+                    <button id="newPad" type="button" class="btn btn-danger nav-btn">New Pad</button>
                 </div>
                 <div class="col-sm-12 col-md-2"> 
-                    <button type="button" class="btn btn-danger nav-btn">Save</button>
+                    <button form="noteForm" type="submit" class="btn btn-danger nav-btn">Save</button>
                 </div>
                 <div class="col-sm-12 col-md-2">
-                    <button type="button" class="btn btn-danger nav-btn">Saved Pads</button>
+                    <button id ="savedPads" type="button" class="btn btn-danger nav-btn">Saved Pads</button>
                 </div>
                 <div class="col-sm-12 col-md-2">
-                <button type="button" class="btn btn-danger nav-btn">Help</button>
+                    <button type="button" class="btn btn-danger nav-btn">Help</button>
                 </div>
             </div>
         </nav>
@@ -41,6 +41,20 @@
             <div class="col-sm-12">
                 <div class="option-wrapper">
                     <!-- OPCIJE ZA TEKST -->
+                    <button id="bold-txt">B</button>
+                    <button id="ital-txt">I</button>
+                    <button id="under-txt">U</button>
+                    <input id="color-txt" type="color" value="black">
+                    <select id="fontSize">
+                        <option value="1">10</option>
+                        <option value="2">13</option>
+                        <option value="3">16</option>
+                        <option value="4">19</option>
+                        <option value="5">21</option>
+                        <option value="6">24</option>
+                        <option value="7">27</option>
+                        <option value="8">33</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -48,16 +62,21 @@
         <div class="row note-row">
             <div class="col-sm-12 notepad">
                 <div class="row text-row">
-                    <div class="col-sm-12 col-md-4 saved-notes">
-                        <!-- SACUVANI PADOVI -->
+                    <div id="savedNotes" class="col-sm-12 saved-notes">
+                        <!-- SACUVANI PADOVI - Dodati pomocu JS da ne bi morao da mijenjam vise stranica dodati kao side bar-->
+                        <!-- Dodatu klasu col-md-8 na textarea i dodtati col-md-4 na saved notes display prebaciti u block -->
+                        <h2>My Pads:</h2>
                     </div>
-                    <div class="col-sm-12 col-md-8 text-wrapper">
-                        <textarea id="textArea" class="notepad-text" rows="10" autofocus></textarea>
+                    <div id="text-wrap" class="col-sm-12 text-wrapper">
+                        <form id="noteForm" class="note-form" method="POST" action="savingNote.php"><!-- different php where we will take new tekst and add it to database-->
+                            <textarea id="textArea" class="notepad-text" autofocus></textarea>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <!-- ------------------------------------- -->
+        <!-- HELP BUTTON MODAL!!! -->
     </div>
     <!-- JS scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

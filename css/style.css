@@ -65,7 +65,11 @@ body {
     padding: 0;
     height: 100%;
 }
+.note-form {
+    height: 100%;
+}
 .notepad-text {
+    font-size: 16px;
     width: 100%;
     padding: 10px;
     background: #F3E4A0;
@@ -77,16 +81,45 @@ body {
 .notepad-text:focus {
     outline: none;
 }
+/* sacuvani PAdovi */
 .saved-notes {
     display: none;
 }
+.saved-notes > h2 {
+    color: #BA4025;
+    text-decoration: underline;
+    text-align: center;
+}
+.on-off {
+    display: block;
+}
+
 /* opcije */
 .option-wrapper {
+    margin: 5px 0;
     word-wrap: break-word;
     color: #BA4025;
 }
+.option-wrapper > button,.option-wrapper > input  {
+    background: #BA4025;
+    border: none;
+    border-radius: 2px;
+    margin-right: 0.3rem;
+}
+.option-wrapper > button:hover,
+.option-wrapper > input:hover,
+.option-wrapper > select:hover
+{
+    background: #F3E4A0;
+}
+.option-wrapper > select {
+    background: #BA4025;
+    border: none;
+    border-radius: 2px;
+}
+
 /* media */
-@media (max-width: 738px){
+@media (max-width: 900px){
     .notepad{
         margin-top: 5px;
     }
@@ -104,5 +137,10 @@ body {
     .nav-btn {
         width: 100%;
         margin: 5px 0;
+    }
+    .option-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
     }
 }
