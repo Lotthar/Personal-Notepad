@@ -10,8 +10,8 @@ $(document).ready(function() {
 let btn = [];
 // pojavljivanje pada za cuvanje na klik na dugme "saved pads"
 $("#savedPads").click(function () {
-    $("#text-wrap").toggleClass(" col-md-8");
-    $("#savedNotes").toggleClass(" col-md-4 on-off");
+    $("#text-wrap").toggleClass(" col-md-7");
+    $("#savedNotes").toggleClass(" col-md-5 on-off");
 });
 // Stavljanje novog pada
 $("#newPad").click(function(){
@@ -26,3 +26,4 @@ $("#newPad").click(function(){
         }
     }
 });
+// sacuvani padovi 

@@ -6,7 +6,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="Bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>NotepadJSlothar</title>
 </head>
@@ -16,45 +18,52 @@
         <!-- NAVBAR -->
         <nav class="navbar navigacija">
             <div class="row">
-                <div class="col-sm-12 col-md-4 logo-container">
+                <div class="col-sm-12 col-md-6 logo-container">
                     <a class="navbar-brand" href="../index.html">
                         <img class="logo-img" src="images/logo.jpg" class="d-inline-block align-top" alt="">
-                        <span class="logo-name">NOTEPAD@Lothar-</span>
+                        <span class="logo-name">Lothar-Notes</span>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-2">
-                    <button id="newPad" type="button" class="btn btn-danger nav-btn">New Pad</button>
+                    <button id="newPad" type="button" class="btn btn-danger nav-btn"><i class="fas fa-clipboard"></i>New Pad</button>
                 </div>
                 <div class="col-sm-12 col-md-2"> 
-                    <button form="noteForm" type="submit" class="btn btn-danger nav-btn">Save</button>
+                    <button name ="saveBtn" form="noteForm" type="submit" class="btn btn-danger nav-btn"><i class="fas fa-save"></i>Save</button>
                 </div>
                 <div class="col-sm-12 col-md-2">
-                    <button id ="savedPads" type="button" class="btn btn-danger nav-btn">Saved Pads</button>
+                    <button id ="savedPads" type="button" class="btn btn-danger nav-btn"><i class="fas fa-server"></i>Saved Pads</button>
                 </div>
-                <div class="col-sm-12 col-md-2">
-                    <button type="button" class="btn btn-danger nav-btn">Help</button>
-                </div>
+                <!-- <div class="col-sm-12 col-md-2">
+                    <button type="button" class="btn btn-danger nav-btn"><i class="fas fa-wrench"></i>Help</button>
+                </div> --> 
+                <!-- UBACITI HELP DUGME AKO SE NAMJESTI ZA LOGIN -->
             </div>
         </nav>
         <!-- OPCIJE -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="option-wrapper">
-                    <!-- OPCIJE ZA TEKST -->
-                    <button id="bold-txt">B</button>
-                    <button id="ital-txt">I</button>
-                    <button id="under-txt">U</button>
-                    <input id="color-txt" type="color" value="black">
-                    <select id="fontSize">
-                        <option value="1">10</option>
-                        <option value="2">13</option>
-                        <option value="3">16</option>
-                        <option value="4">19</option>
-                        <option value="5">21</option>
-                        <option value="6">24</option>
-                        <option value="7">27</option>
-                        <option value="8">33</option>
-                    </select>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5 title-wrapper">
+                        <h1 class="noteTitle">Proba naslov</h1> <!-- Naslov koji ide iz baze-->
+                    </div>
+                    <div class="col-sm-12 col-md-7 optionCol">
+                        <div class="option-wrapper">
+                            <!-- OPCIJE ZA TEKST -->
+                            <button id="bold-txt">B</button>
+                            <button id="ital-txt">I</button>
+                            <button id="under-txt">U</button>
+                            <input id="color-txt" type="color" value="black">
+                            <select id="fontSize">              <!--- Unosi se iz baze takodje i u nju-->
+                                <option value="1">20px</option>   
+                                <option value="2">25px</option>
+                                <option value="3">30px</option>
+                                <option value="4">35px</option>
+                                <option value="5">40px</option>
+                                <option value="6">45px</option>
+                            </select>
+                            <input min="1" max="10" class="linespacingTxt" type="number" id="linespacing-txt"><i class="fas fa-grip-lines"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,13 +72,38 @@
             <div class="col-sm-12 notepad">
                 <div class="row text-row">
                     <div id="savedNotes" class="col-sm-12 saved-notes">
-                        <!-- SACUVANI PADOVI - Dodati pomocu JS da ne bi morao da mijenjam vise stranica dodati kao side bar-->
-                        <!-- Dodatu klasu col-md-8 na textarea i dodtati col-md-4 na saved notes display prebaciti u block -->
                         <h2>My Pads:</h2>
+                        <div class="row"> 
+                            <!-- potrebno je dinamicki popunjavati iz baze  -->
+                            <div class="col-sm-12 saved-container">
+                                <div class="saved-wrapper">
+                                    <!-- notes iz baze ------dinamicko popunjavanje-------------->
+                                    <div class="row">
+                                        <div class="col-sm-6 ime-pad">
+                                            <h4 class="imePad">Proba saved note</h4>
+                                        </div>
+                                        <div class="col-sm-6 datum-pad">
+                                            <h5 class="datumPad">24/03/2019</h5>
+                                        </div>
+                                    </div>
+                                    <!-- sledeci note -->
+                                    <hr class="separator"> <!-- separator nota-->
+                                    <div class="row">
+                                        <div class="col-sm-6 ime-pad">
+                                            <h4 class="imePad">Proba saved note</h2>
+                                        </div>
+                                        <div class="col-sm-6 datum-pad">
+                                            <h5 class="datumPad">24/03/2019</h2>
+                                        </div>
+                                    </div>
+                                    <!-- ------------------------- -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="text-wrap" class="col-sm-12 text-wrapper">
                         <form id="noteForm" class="note-form" method="POST" action="savingNote.php"><!-- different php where we will take new tekst and add it to database-->
-                            <textarea id="textArea" class="notepad-text" autofocus></textarea>
+                            <textarea name="saveText" id="textArea" class="notepad-text" autofocus></textarea>
                         </form>
                     </div>
                 </div>
@@ -77,6 +111,7 @@
         </div>
         <!-- ------------------------------------- -->
         <!-- HELP BUTTON MODAL!!! -->
+
     </div>
     <!-- JS scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

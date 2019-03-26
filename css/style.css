@@ -1,6 +1,6 @@
 /* whole app */
 * {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Kaushan Script', cursive;
 }
 body {
     background-color: black;
@@ -23,6 +23,7 @@ body {
     font-size: 1.3rem;
     color: #BA4025;
     border: 2px solid #BA4025;
+    padding: 6px;
 }
 .logo-img {
     width: 50px;
@@ -69,7 +70,7 @@ body {
     height: 100%;
 }
 .notepad-text {
-    font-size: 16px;
+    font-size: 20px;
     width: 100%;
     padding: 10px;
     background: #F3E4A0;
@@ -99,6 +100,7 @@ body {
     margin: 5px 0;
     word-wrap: break-word;
     color: #BA4025;
+    float: right;
 }
 .option-wrapper > button,.option-wrapper > input  {
     background: #BA4025;
@@ -117,18 +119,59 @@ body {
     border: none;
     border-radius: 2px;
 }
+.linespacingTxt {
+    width: 40px;
+}
+/* Naslov  */
 
+.noteTitle {
+    text-align: left;
+    color: #F3E4A0;
+    text-decoration: underline;
+    text-decoration-color: #F3E4A0;
+    word-wrap: break-word;
+}
+
+/* Saved pads */
+
+.saved-container {
+    padding: 0;
+}
+.saved-wrapper {
+    width: 100%;
+    border: 2px solid #BA4025;
+    border-radius: 5px;
+    margin: 10px 0;
+    color: #F3E4A0;
+}
+.separator {
+    border: 1px solid #BA4025;
+    margin: 10px 0;
+}
+.ime-pad {
+    text-align: left;
+    word-wrap: break-word;
+    padding: 2px 0 0 5px;
+}
+.datum-pad {
+    margin: auto 0;
+    text-align: center;
+    color: black;
+    font-style: italic;
+    padding: 2px 0 0 5px;
+}
 /* media */
 @media (max-width: 900px){
     .notepad{
         margin-top: 5px;
     }
-    .logo-container{
-        padding-left: 8.5rem;
+    a.navbar-brand {
+        margin: 0;
     }
-    .logo-name {
-        position: absolute;
-        display: none;
+    .logo-container{
+        /* padding-left: 8.5rem; */
+        display: flex;
+        justify-content: center;
     }
     .navigacija {
         margin: 0;
@@ -138,9 +181,20 @@ body {
         width: 100%;
         margin: 5px 0;
     }
-    .option-wrapper {
+    .optionCol {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        margin: 10px 0;
+    }
+    .option-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .noteTitle {
+        text-align: center;
+        padding-top: 10px;
     }
 }
