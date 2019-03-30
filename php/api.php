@@ -1,10 +1,12 @@
 <?php
 require_once 'funkcije.php';
+header('Content-type:application/json;charset=utf-8');
+http_response_code(200);
 
 function notepadApi(){
     if(isset($_REQUEST["method"])){
         switch($_REQUEST["method"]){
-            // metode za requestove
+            case "allNotes": return allNotes();
             default: return error();
         }
     } else {
@@ -16,5 +18,5 @@ function error() {
     return ["status" => -5, "poruka" => "Metod ili objekat kome pristupate ne postoji."];
 }
 
-echo json_encode(api());
+echo json_encode(notepadApi());
 ?>

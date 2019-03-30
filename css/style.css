@@ -142,7 +142,8 @@ body {
     border: 2px solid #BA4025;
     border-radius: 5px;
     margin: 10px 0;
-    color: #F3E4A0;
+    color: #BA4025;
+    background-color: #F3E4A0;
 }
 .separator {
     border: 1px solid #BA4025;
