@@ -46,8 +46,76 @@ $("#newPad").click(function(){
             document.getElementById("textArea").value = "";
         }
         else{
-            saveNotepad();
             return;
         }
     }
 });
+// Stilizovanje font-a teksta
+var switcher1 = 0, switcher2 = 0, switcher3 = 0;
+$("#boldTxt").click(function(){
+    if(switcher1 == 0){
+        $("#boldTxt").css("background","#F3E4A0");
+        $("#textArea").css("font-weight","bolder");
+        switcher1 = 1;
+    } else {
+        $("#boldTxt").css("background", "#BA4025");
+        $("#textArea").css("font-weight", "normal");
+        switcher1 = 0;
+    }
+});
+$("#italTxt").click(function () {
+    if (switcher2 == 0) {
+        $("#italTxt").css("background", "#F3E4A0");
+        $("#textArea").css("font-style", "italic");
+        switcher2 = 1;
+    } else {
+        $("#italTxt").css("background", "#BA4025");
+        $("#textArea").css("font-style", "normal");
+        switcher2 = 0;
+    }
+});
+$("#underTxt").click(function () {
+    if (switcher3 == 0) {
+        $("#underTxt").css("background", "#F3E4A0");
+        $("#textArea").css("text-decoration-line", "underline");
+        switcher3 = 1;
+    } else {
+        $("#underTxt").css("background", "#BA4025");
+        $("#textArea").css("text-decoration", "none");
+        switcher3 = 0;
+    }
+});
+$("#colorTxt").change(function(){
+    let $boja = $("#colorTxt").val();
+    $("#textArea").css("color", $boja);
+});
+
+$("#fontSize").change(function(){
+    let size = $("#fontSize").val();
+    console.log(size);
+    switch(size){
+        case '1': 
+            $("#textArea").css("font-size", "20px");
+            break;
+        case '2':
+            $("#textArea").css("font-size", "25px");
+            break;
+        case '3': 
+            $("#textArea").css("font-size", "30px");
+            break;
+        case '4': 
+            $("#textArea").css("font-size", "35px");
+            break;
+        case '5': 
+            $("#textArea").css("font-size", "40px");
+            break;
+        case '6': 
+            $("#textArea").css("font-size", "45px");
+            break;
+        default: 
+            $("#textArea").css("font-size", "20px");
+            break;
+    }
+});
+
+// cuvanje biljeski

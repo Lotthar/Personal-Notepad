@@ -1,23 +1,27 @@
 /* whole app */
 * {
-    font-family: 'Kaushan Script', cursive;
+    font-family: 'Boogaloo', cursive;
 }
+
 body {
     background-color: black;
     height: 100%;
 }
+
 /* NAVBAR */
 .navigacija {
     border-radius: 5px;
     margin: 0.5%;
     padding: 10px;
     background: rgb(34, 32, 28);
-} 
+}
+
 .row {
     width: 100%;
     margin: 0;
     padding: 0;
 }
+
 .logo-name {
     margin: auto 0 auto 1rem;
     font-size: 1.3rem;
@@ -25,50 +29,60 @@ body {
     border: 2px solid #BA4025;
     padding: 6px;
 }
+
 .logo-img {
     width: 50px;
     height: 50px;
     border-radius: 40%;
 }
+
 .logo-name:hover {
     transition-property: all;
     transition-timing-function: ease-in;
     color: #F3E4A0;
     border: 2px solid #F3E4A0;
 }
+
 .nav-btn {
     text-align: center;
-    margin: 4px; 
+    margin: 4px;
     padding: 8px 1rem;
     width: 100%;
     color: black;
     background: #BA4025;
 }
+
 .nav-btn:hover {
     color: black;
     background: #F3E4A0;
 }
+
 /* notepad */
 .note-row {
     margin: 0;
     height: 100%;
 }
+
 .text-row {
     height: 100%;
 }
+
 .notepad {
     border-radius: 5px;
     padding: 5px;
     margin: 2px 0;
     background: rgb(34, 32, 28);
 }
+
 .text-wrapper {
     padding: 0;
     height: 100%;
 }
+
 .note-form {
     height: 100%;
 }
+
 .notepad-text {
     font-size: 20px;
     width: 100%;
@@ -78,19 +92,30 @@ body {
     border: 3px groove #BA4025;
     border-radius: 5px;
     height: 100%;
+    scrollbar-face-color: #BA4025;
+    scrollbar-track-color: black;
+    scrollbar-arrow-color: #ffffff;
+    scrollbar-highlight-color: rgb(167, 57, 32);
+    scrollbar-shadow-color: #937C59;
+    scrollbar-3dlight-color: #ffebcd;
+    scrollbar-darkshadow-color: #1D201C;
 }
+
 .notepad-text:focus {
     outline: none;
 }
+
 /* sacuvani PAdovi */
 .saved-notes {
     display: none;
 }
-.saved-notes > h2 {
+
+.saved-notes>h2 {
     color: #BA4025;
     text-decoration: underline;
     text-align: center;
 }
+
 .on-off {
     display: block;
 }
@@ -102,34 +127,46 @@ body {
     color: #BA4025;
     float: right;
 }
-.option-wrapper > button,.option-wrapper > input  {
+
+.option-wrapper>button,
+.option-wrapper>input {
     background: #BA4025;
     border: none;
     border-radius: 2px;
     margin-right: 0.3rem;
 }
-.option-wrapper > button:hover,
-.option-wrapper > input:hover,
-.option-wrapper > select:hover
-{
+
+.option-wrapper>button:hover,
+.option-wrapper>input:hover,
+.option-wrapper>select:hover {
     background: #F3E4A0;
 }
-.option-wrapper > select {
+
+.option-wrapper>select {
     background: #BA4025;
     border: none;
     border-radius: 2px;
 }
+
 .linespacingTxt {
     width: 40px;
 }
+
 /* Naslov  */
 
 .noteTitle {
+    border: none;
+    background: black;
     text-align: left;
     color: #F3E4A0;
     text-decoration: underline;
     text-decoration-color: #F3E4A0;
     word-wrap: break-word;
+    font-size: 30px;
+}
+
+.noteTitle:focus {
+    outline: none;
 }
 
 /* Saved pads */
@@ -137,7 +174,9 @@ body {
 .saved-container {
     padding: 0;
 }
+
 .saved-wrapper {
+    cursor: pointer;
     width: 100%;
     border: 2px solid #BA4025;
     border-radius: 5px;
@@ -145,15 +184,18 @@ body {
     color: #BA4025;
     background-color: #F3E4A0;
 }
+
 .separator {
     border: 1px solid #BA4025;
     margin: 10px 0;
 }
+
 .ime-pad {
     text-align: left;
     word-wrap: break-word;
     padding: 2px 0 0 5px;
 }
+
 .datum-pad {
     margin: auto 0;
     text-align: center;
@@ -161,41 +203,51 @@ body {
     font-style: italic;
     padding: 2px 0 0 5px;
 }
+
 /* media */
-@media (max-width: 900px){
-    .notepad{
+@media (max-width: 900px) {
+    .notepad {
         margin-top: 5px;
     }
+
     a.navbar-brand {
         margin: 0;
     }
-    .logo-container{
+
+    .logo-container {
         /* padding-left: 8.5rem; */
         display: flex;
         justify-content: center;
     }
+
     .navigacija {
         margin: 0;
         padding-left: 25x;
     }
+
     .nav-btn {
         width: 100%;
         margin: 5px 0;
     }
+
     .optionCol {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         margin: 10px 0;
     }
+
     .option-wrapper {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
     }
+
     .noteTitle {
         text-align: center;
         padding-top: 10px;
     }
 }
+
+/* Toggle buttons */
