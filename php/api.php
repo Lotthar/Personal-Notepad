@@ -7,6 +7,8 @@ function notepadApi(){
     if(isset($_REQUEST["method"])){
         switch($_REQUEST["method"]){
             case "allNotes": return allNotes();
+            case "allNotesNames": return allNotesNames();
+            case "noteTekst": return dajTekst();
             default: return error();
         }
     } else {

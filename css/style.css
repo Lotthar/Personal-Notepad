@@ -195,6 +195,9 @@ body {
     word-wrap: break-word;
     padding: 2px 0 0 5px;
 }
+.ime-pad:hover {
+    color: #1D201C;
+}
 
 .datum-pad {
     margin: auto 0;

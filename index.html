@@ -43,7 +43,7 @@
             <div class="col-sm-12">
                 <div class="row">
                     <div class="col-sm-12 col-md-5 title-wrapper">
-                        <input name ="tekstNaslov" form="noteForm" class="noteTitle" value="Proba naslov"> <!-- Naslov koji ide iz baze-->
+                        <input id="naslovTekst" name ="tekstNaslov" form="noteForm" class="noteTitle" value="New Pad"> <!-- Naslov koji ide iz baze-->
                     </div>
                     <div class="col-sm-12 col-md-7 optionCol">
                         <div class="option-wrapper">
@@ -74,28 +74,7 @@
                         <div class="row"> 
                             <!-- potrebno je dinamicki popunjavati iz baze  -->
                             <div class="col-sm-12 saved-container">
-                                <div id="wrappedNotes" class="saved-wrapper">
-                                    <!-- notes iz baze ------dinamicko popunjavanje *smjestanje podataka-------------->
-                                    <!-- <div class="row">
-                                        <div class="col-sm-6 ime-pad">
-                                            <h4 class="imePad">Proba saved note</h4>
-                                        </div>
-                                        <div class="col-sm-6 datum-pad">
-                                            <h5 class="datumPad">24/03/2019</h5>
-                                        </div>
-                                    </div> -->
-                                    <!-- sledeci note -->
-                                    <!-- <hr class="separator"> separator nota -->
-                                    <!-- <div class="row">
-                                        <div class="col-sm-6 ime-pad">
-                                            <h4 class="imePad">Proba saved note</h2>
-                                        </div>
-                                        <div class="col-sm-6 datum-pad">
-                                            <h5 class="datumPad">24/03/2019</h2>
-                                        </div>
-                                    </div> -->
-                                    <!-- ------------------------- -->
-                                </div>
+                                <div id="wrappedNotes" class="saved-wrapper"></div>
                             </div>
                         </div>
                     </div>
@@ -121,3 +100,24 @@
         <script src="js/main.js"></script>
 </body>
 </html>
+
+<!-- notes iz baze ------dinamicko popunjavanje *smjestanje podataka-------------->
+<!-- <div class="row">
+                                        <div class="col-sm-6 ime-pad">
+                                            <h4 class="imePad">Proba saved note</h4>
+                                        </div>
+                                        <div class="col-sm-6 datum-pad">
+                                            <h5 class="datumPad">24/03/2019</h5>
+                                        </div>
+                                    </div> -->
+<!-- sledeci note -->
+<!-- <hr class="separator"> separator nota -->
+<!-- <div class="row">
+                                        <div class="col-sm-6 ime-pad">
+                                            <h4 class="imePad">Proba saved note</h2>
+                                        </div>
+                                        <div class="col-sm-6 datum-pad">
+                                            <h5 class="datumPad">24/03/2019</h2>
+                                        </div>
+                                    </div> -->
+<!-- ------------------------- -->
