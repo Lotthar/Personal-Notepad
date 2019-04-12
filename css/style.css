@@ -99,6 +99,7 @@ body {
     scrollbar-shadow-color: #937C59;
     scrollbar-3dlight-color: #ffebcd;
     scrollbar-darkshadow-color: #1D201C;
+    white-space: pre-line;
 }
 
 .notepad-text:focus {
@@ -153,11 +154,14 @@ body {
 }
 
 /* Naslov  */
+.title-wrapper {
+    display: flex;
+    justify-content: start;
 
+}
 .noteTitle {
     border: none;
     background: black;
-    text-align: left;
     color: #F3E4A0;
     text-decoration: underline;
     text-decoration-color: #F3E4A0;
@@ -194,9 +198,11 @@ body {
     text-align: left;
     word-wrap: break-word;
     padding: 2px 0 0 5px;
+    color: #BA4025
 }
+
 .ime-pad:hover {
-    color: #1D201C;
+    color: black;
 }
 
 .datum-pad {
@@ -246,7 +252,10 @@ body {
         align-items: center;
         justify-content: space-evenly;
     }
-
+    .title-wrapper {
+        justify-content: center;
+        align-content: center;
+    }
     .noteTitle {
         text-align: center;
         padding-top: 10px;

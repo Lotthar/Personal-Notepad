@@ -9,6 +9,7 @@ function notepadApi(){
             case "allNotes": return allNotes();
             case "allNotesNames": return allNotesNames();
             case "noteTekst": return dajTekst();
+            case "noteData": return dajNoteData();
             default: return error();
         }
     } else {

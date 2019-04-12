@@ -14,7 +14,18 @@ function getParam($param, $defaultValue, $stop)
         }
     }
 }
-
+// Sve o biljesci 
+function dajNoteData(){
+    $naslov = getParam("naslov", null, false);
+    $sql = "select * from biljeske where naziv='$naslov'";
+    try{
+        $rez = arrayQuery($sql);
+        return $rez[0];
+    }
+    catch(PDOException $e){
+        return ["status" => -5, "poruka" => $e . "Neuspjeo upit!"];
+    }
+}
 //sve kompletne biljeske 
 function allNotes() {
     $sql = "select * from biljeske order by datum desc;";
