@@ -1,123 +1,157 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet">    <link rel="stylesheet" href="css/style.css">
-    <title>NotepadJSlothar</title>
-</head>
-<body>
-    <!-- Citav dokument -->
-    <div class="container-fluid">
-        <!-- NAVBAR -->
-        <nav class="navbar navigacija">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 logo-container">
-                    <a class="navbar-brand" href="../NotepadJS/">
-                        <img class="logo-img" src="images/logo.jpg" class="d-inline-block align-top" alt="">
-                        <span class="logo-name">Lothar-Notes</span>
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-2">
-                    <button id="newPad" type="button" class="btn btn-danger nav-btn"><i class="fas fa-clipboard"></i>New</button>
-                </div>
-                <div class="col-sm-12 col-md-2"> 
-                    <button name ="saveBtn" form="noteForm" type="submit" class="btn btn-danger nav-btn"><i class="fas fa-save"></i>Save</button>
-                </div>
-                <div class="col-sm-12 col-md-2">
-                    <button id ="savedPads" type="button" class="btn btn-danger nav-btn"><i class="fas fa-server"></i>Saved</button>
-                </div>
-                <!-- <div class="col-sm-12 col-md-2">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="Bootstrap/css/bootstrap-grid.min.css" />
+		<link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+			integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+			crossorigin="anonymous"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Boogaloo"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<title>NotepadJSlothar</title>
+	</head>
+	<body>
+		<!-- Citav dokument -->
+		<div class="container-fluid">
+			<!-- NAVBAR -->
+			<nav class="navbar navigacija">
+				<div class="row">
+					<div class="col-sm-12 col-md-4 logo-container">
+						<a class="navbar-brand" href="../NotepadJS/">
+							<img
+								class="logo-img"
+								src="images/logo.jpg"
+								class="d-inline-block align-top"
+								alt=""
+							/>
+							<span class="logo-name">Lothar-Notes</span>
+						</a>
+					</div>
+					<div class="col-sm-12 col-md-2">
+						<button id="newPad" type="button" class="btn btn-danger nav-btn">
+							<i class="fas fa-clipboard"></i>New
+						</button>
+					</div>
+					<div class="col-sm-12 col-md-2">
+						<button
+							id="saving"
+							name="saveBtn"
+							type="submit"
+							class="btn btn-danger nav-btn"
+						>
+							<i class="fas fa-save"></i>Save
+						</button>
+					</div>
+					<div class="col-sm-12 col-md-2">
+						<button id="savedPads" type="button" class="btn btn-danger nav-btn">
+							<i class="fas fa-server"></i>Saved
+						</button>
+					</div>
+					<div class="col-sm-12 col-md-2">
+						<button id="deletePad" type="button" class="btn btn-danger nav-btn">
+							<i class="fas fa-trash"></i>Delete
+						</button>
+					</div>
+					<!-- <div class="col-sm-12 col-md-2">
                     <button type="button" class="btn btn-danger nav-btn"><i class="fas fa-wrench"></i>Help</button>
-                </div> --> 
-                <!-- UBACITI HELP DUGME AKO SE NAMJESTI ZA LOGIN -->
-            </div>
-        </nav>
-        <!-- OPCIJE -->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 title-wrapper">
-                        <input id="naslovTekst" name ="tekstNaslov" form="noteForm" class="noteTitle" value="New Pad"> <!-- Naslov koji ide iz baze-->
-                    </div>
-                    <div class="col-sm-12 col-md-6 optionCol">
-                        <div class="option-wrapper">
-                            <!-- OPCIJE ZA TEKST -->
-                            <button class="" id="boldTxt">B</button>
-                            <button class="" id="italTxt">I</button>
-                            <button class="" id="underTxt">U</button>
-                            <input id="colorTxt" type="color" value="black">
-                            <select id="fontSize">              <!--- Unosi se iz baze takodje i u nju-->
-                                <option value="1">20px</option>   
-                                <option value="2">25px</option>
-                                <option value="3">30px</option>
-                                <option value="4">35px</option>
-                                <option value="5">40px</option>
-                                <option value="6">45px</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- TEKSTUALNI DIO -->
-        <div class="row note-row">
-            <div class="col-sm-12 notepad">
-                <div class="row text-row">
-                    <div id="savedNotes" class="col-sm-12 saved-notes">
-                        <h2>My Pads:</h2>
-                        <div class="row"> 
-                            <!-- potrebno je dinamicki popunjavati iz baze  -->
-                            <div class="col-sm-12 saved-container">
-                                <div id="wrappedNotes" class="saved-wrapper"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="text-wrap" class="col-sm-12 text-wrapper">
-                        <form id="noteForm" class="note-form" method="POST" action="php/saveNote.php"><!-- different php where we will take new tekst and add it to database-->
-                            <textarea name="saveText" id="textArea" class="notepad-text" autofocus></textarea>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ------------------------------------- -->
-        <!-- HELP BUTTON MODAL!!! -->
-
-    </div>
-    <!-- JS scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-        <script src="Bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
-</body>
+                </div> -->
+					<!-- UBACITI HELP DUGME AKO SE NAMJESTI ZA LOGIN -->
+				</div>
+			</nav>
+			<!-- OPCIJE -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-12 col-md-6 title-wrapper">
+							<input
+								id="naslovTekst"
+								name="tekstNaslov"
+								form="noteForm"
+								class="noteTitle"
+								value="New Pad"
+							/>
+							<!-- Naslov koji ide iz baze-->
+						</div>
+						<div class="col-sm-12 col-md-6 optionCol">
+							<div class="option-wrapper">
+								<!-- OPCIJE ZA TEKST -->
+								<button class="" id="boldTxt">B</button>
+								<button class="" id="italTxt">I</button>
+								<button class="" id="underTxt">U</button>
+								<input id="colorTxt" type="color" value="black" />
+								<select id="fontSize">
+									<!--- Unosi se iz baze takodje i u nju-->
+									<option value="20">20px</option>
+									<option value="25">25px</option>
+									<option value="30">30px</option>
+									<option value="35">35px</option>
+									<option value="40">40px</option>
+									<option value="45">45px</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- TEKSTUALNI DIO -->
+			<div class="row note-row">
+				<div class="col-sm-12 notepad">
+					<div class="row text-row">
+						<div id="savedNotes" class="col-sm-12 col-md-4 on-off saved-notes">
+							<h2>My Pads:</h2>
+							<div class="row">
+								<!-- potrebno je dinamicki popunjavati iz baze  -->
+								<div class="col-sm-12 saved-container">
+									<div id="wrappedNotes" class="saved-wrapper"></div>
+								</div>
+							</div>
+						</div>
+						<div id="text-wrap" class="col-sm-12 col-md-8 text-wrapper">
+							<form
+								id="noteForm"
+								class="note-form"
+								method="POST"
+								action="php/saveNote.php"
+							>
+								<!-- different php where we will take new tekst and add it to database-->
+								<textarea
+									name="saveText"
+									id="textArea"
+									class="notepad-text"
+									autofocus
+								></textarea>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ------------------------------------- -->
+			<!-- HELP BUTTON MODAL!!! -->
+		</div>
+		<!-- JS scripts -->
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"
+		></script>
+		<script src="Bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
 </html>
-
-<!-- notes iz baze ------dinamicko popunjavanje *smjestanje podataka-------------->
-<!-- <div class="row">
-                                        <div class="col-sm-6 ime-pad">
-                                            <h4 class="imePad">Proba saved note</h4>
-                                        </div>
-                                        <div class="col-sm-6 datum-pad">
-                                            <h5 class="datumPad">24/03/2019</h5>
-                                        </div>
-                                    </div> -->
-<!-- sledeci note -->
-<!-- <hr class="separator"> separator nota -->
-<!-- <div class="row">
-                                        <div class="col-sm-6 ime-pad">
-                                            <h4 class="imePad">Proba saved note</h2>
-                                        </div>
-                                        <div class="col-sm-6 datum-pad">
-                                            <h5 class="datumPad">24/03/2019</h2>
-                                        </div>
-                                    </div> -->
-<!-- ------------------------- -->
