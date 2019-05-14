@@ -340,7 +340,6 @@ document.querySelector("#saving").addEventListener("click", function() {
 		url += "&datum=" + datum;
 
 		url += "&tekst=" + encodeURIComponent(biljeskaTxt);
-		console.log(encodeURIComponent(biljeskaTxt));
 		let zahtjev = new XMLHttpRequest();
 		zahtjev.open("POST", url, true);
 		zahtjev.onreadystatechange = function() {
