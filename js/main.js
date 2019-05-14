@@ -197,68 +197,27 @@ function addReturn() {
 		let naslov = e.target.innerHTML;
 		let trenutniNaslov = document.getElementById("naslovTekst");
 		let notepad = document.getElementById("textArea");
-		try {
-			allNoteNames(function(svaImena) {
-				if (svaImena.has(trenutniNaslov)) {
-					if (confirm("Jeste li sacuvali sve izmjene biljeske?")) {
-						dajNoteData(naslov, function(biljeskaPodaci) {
-							notepad.value = decodeURIComponent(biljeskaPodaci.tekst);
-							document.getElementById("naslovTekst").value =
-								biljeskaPodaci.naziv;
-							if (biljeskaPodaci.bold == "0") {
-								notepad.style.fontWeight = "bolder";
-								switcherB = 1;
-								bolder();
-							} else notepad.style.fontWeight = "normal";
-							if (biljeskaPodaci.italic != "0") {
-								switcherI = 1;
-								italic();
-								notepad.style.fontStyle = "italic";
-							} else notepad.style.fontStyle = "normal";
-							if (biljeskaPodaci.under != "0") {
-								switcherU = 1;
-								underline();
-								notepad.style.textDecoration = "underline";
-							} else {
-								notepad.style.textDecoration = "none";
-							}
-							notepad.style.color = "#" + biljeskaPodaci.boja;
-							$("#colorTxt").val("#" + biljeskaPodaci.boja);
-							notepad.style.fontSize = biljeskaPodaci.font + "px";
-							$("#fontSize").val(biljeskaPodaci.font);
-						});
-					} else {
-						return;
-					}
-				} else {
+		allNoteNames(function(svaImena) {
+			if (svaImena.has(trenutniNaslov)) {
+				if (confirm("Jeste li sacuvali sve izmjene biljeske?")) {
 					dajNoteData(naslov, function(biljeskaPodaci) {
-						notepad.value = biljeskaPodaci.tekst;
+						notepad.value = decodeURIComponent(biljeskaPodaci.tekst);
 						document.getElementById("naslovTekst").value = biljeskaPodaci.naziv;
-						if (biljeskaPodaci.bold == "0") {
+						if (biljeskaPodaci.bold != "0") {
 							notepad.style.fontWeight = "bolder";
-							switcherB = 0;
-							bolder();
-						} else {
-							notepad.style.fontWeight = "normal";
 							switcherB = 1;
 							bolder();
-						}
+						} else notepad.style.fontWeight = "normal";
 						if (biljeskaPodaci.italic != "0") {
-							switcherI = 0;
-							italic();
-							notepad.style.fontStyle = "italic";
-						} else {
 							switcherI = 1;
 							italic();
-							notepad.style.fontStyle = "normal";
-						}
+							notepad.style.fontStyle = "italic";
+						} else notepad.style.fontStyle = "normal";
 						if (biljeskaPodaci.under != "0") {
-							switcherU = 0;
+							switcherU = 1;
 							underline();
 							notepad.style.textDecoration = "underline";
 						} else {
-							switcherU = 1;
-							underline();
 							notepad.style.textDecoration = "none";
 						}
 						notepad.style.color = "#" + biljeskaPodaci.boja;
@@ -266,9 +225,47 @@ function addReturn() {
 						notepad.style.fontSize = biljeskaPodaci.font + "px";
 						$("#fontSize").val(biljeskaPodaci.font);
 					});
+				} else {
+					return;
 				}
-			});
-		} catch {}
+			} else {
+				dajNoteData(naslov, function(biljeskaPodaci) {
+					notepad.value = decodeURIComponent(biljeskaPodaci.tekst);
+					document.getElementById("naslovTekst").value = biljeskaPodaci.naziv;
+					if (biljeskaPodaci.bold != "0") {
+						notepad.style.fontWeight = "bolder";
+						switcherB = 0;
+						bolder();
+					} else {
+						notepad.style.fontWeight = "normal";
+						switcherB = 1;
+						bolder();
+					}
+					if (biljeskaPodaci.italic != "0") {
+						switcherI = 0;
+						italic();
+						notepad.style.fontStyle = "italic";
+					} else {
+						switcherI = 1;
+						italic();
+						notepad.style.fontStyle = "normal";
+					}
+					if (biljeskaPodaci.under != "0") {
+						switcherU = 0;
+						underline();
+						notepad.style.textDecoration = "underline";
+					} else {
+						switcherU = 1;
+						underline();
+						notepad.style.textDecoration = "none";
+					}
+					notepad.style.color = "#" + biljeskaPodaci.boja;
+					$("#colorTxt").val("#" + biljeskaPodaci.boja);
+					notepad.style.fontSize = biljeskaPodaci.font + "px";
+					$("#fontSize").val(biljeskaPodaci.font);
+				});
+			}
+		});
 	});
 }
 addReturn();
