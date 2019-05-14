@@ -182,7 +182,9 @@ function dajNoteData(noteNaslov, callback) {
 	zahtjev.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			// izmijeniti tako da vraca i sve ostalo vezano za tekst
-			callback(JSON.parse(this.responseText));
+			try {
+				callback(JSON.parse(this.responseText));
+			} catch (e) {}
 		}
 	};
 	zahtjev.send();
@@ -195,27 +197,68 @@ function addReturn() {
 		let naslov = e.target.innerHTML;
 		let trenutniNaslov = document.getElementById("naslovTekst");
 		let notepad = document.getElementById("textArea");
-		allNoteNames(function(svaImena) {
-			if (svaImena.has(trenutniNaslov)) {
-				if (confirm("Jeste li sacuvali sve izmjene biljeske?")) {
+		try {
+			allNoteNames(function(svaImena) {
+				if (svaImena.has(trenutniNaslov)) {
+					if (confirm("Jeste li sacuvali sve izmjene biljeske?")) {
+						dajNoteData(naslov, function(biljeskaPodaci) {
+							notepad.value = decodeURIComponent(biljeskaPodaci.tekst);
+							document.getElementById("naslovTekst").value =
+								biljeskaPodaci.naziv;
+							if (biljeskaPodaci.bold == "0") {
+								notepad.style.fontWeight = "bolder";
+								switcherB = 1;
+								bolder();
+							} else notepad.style.fontWeight = "normal";
+							if (biljeskaPodaci.italic != "0") {
+								switcherI = 1;
+								italic();
+								notepad.style.fontStyle = "italic";
+							} else notepad.style.fontStyle = "normal";
+							if (biljeskaPodaci.under != "0") {
+								switcherU = 1;
+								underline();
+								notepad.style.textDecoration = "underline";
+							} else {
+								notepad.style.textDecoration = "none";
+							}
+							notepad.style.color = "#" + biljeskaPodaci.boja;
+							$("#colorTxt").val("#" + biljeskaPodaci.boja);
+							notepad.style.fontSize = biljeskaPodaci.font + "px";
+							$("#fontSize").val(biljeskaPodaci.font);
+						});
+					} else {
+						return;
+					}
+				} else {
 					dajNoteData(naslov, function(biljeskaPodaci) {
 						notepad.value = biljeskaPodaci.tekst;
 						document.getElementById("naslovTekst").value = biljeskaPodaci.naziv;
 						if (biljeskaPodaci.bold == "0") {
 							notepad.style.fontWeight = "bolder";
+							switcherB = 0;
+							bolder();
+						} else {
+							notepad.style.fontWeight = "normal";
 							switcherB = 1;
 							bolder();
-						} else notepad.style.fontWeight = "normal";
+						}
 						if (biljeskaPodaci.italic != "0") {
-							switcherI = 1;
+							switcherI = 0;
 							italic();
 							notepad.style.fontStyle = "italic";
-						} else notepad.style.fontStyle = "normal";
+						} else {
+							switcherI = 1;
+							italic();
+							notepad.style.fontStyle = "normal";
+						}
 						if (biljeskaPodaci.under != "0") {
-							switcherU = 1;
+							switcherU = 0;
 							underline();
 							notepad.style.textDecoration = "underline";
 						} else {
+							switcherU = 1;
+							underline();
 							notepad.style.textDecoration = "none";
 						}
 						notepad.style.color = "#" + biljeskaPodaci.boja;
@@ -223,47 +266,9 @@ function addReturn() {
 						notepad.style.fontSize = biljeskaPodaci.font + "px";
 						$("#fontSize").val(biljeskaPodaci.font);
 					});
-				} else {
-					return;
 				}
-			} else {
-				dajNoteData(naslov, function(biljeskaPodaci) {
-					notepad.value = biljeskaPodaci.tekst;
-					document.getElementById("naslovTekst").value = biljeskaPodaci.naziv;
-					if (biljeskaPodaci.bold == "0") {
-						notepad.style.fontWeight = "bolder";
-						switcherB = 0;
-						bolder();
-					} else {
-						notepad.style.fontWeight = "normal";
-						switcherB = 1;
-						bolder();
-					}
-					if (biljeskaPodaci.italic != "0") {
-						switcherI = 0;
-						italic();
-						notepad.style.fontStyle = "italic";
-					} else {
-						switcherI = 1;
-						italic();
-						notepad.style.fontStyle = "normal";
-					}
-					if (biljeskaPodaci.under != "0") {
-						switcherU = 0;
-						underline();
-						notepad.style.textDecoration = "underline";
-					} else {
-						switcherU = 1;
-						underline();
-						notepad.style.textDecoration = "none";
-					}
-					notepad.style.color = "#" + biljeskaPodaci.boja;
-					$("#colorTxt").val("#" + biljeskaPodaci.boja);
-					notepad.style.fontSize = biljeskaPodaci.font + "px";
-					$("#fontSize").val(biljeskaPodaci.font);
-				});
-			}
-		});
+			});
+		} catch {}
 	});
 }
 addReturn();
@@ -313,7 +318,6 @@ document.querySelector("#saving").addEventListener("click", function() {
 		} else {
 			method = "Saving";
 		}
-		console.log(method);
 		let url = "../NotepadJS/php/api.php?method=" + method + "&naslov=" + naslov;
 
 		if (switcherB == 1) url += "&bold=1";
@@ -334,8 +338,9 @@ document.querySelector("#saving").addEventListener("click", function() {
 		let datum = yyyy + "-" + mm + "-" + dd;
 
 		url += "&datum=" + datum;
-		url += "&tekst=" + biljeskaTxt;
-		console.log(url);
+
+		url += "&tekst=" + encodeURIComponent(biljeskaTxt);
+		console.log(encodeURIComponent(biljeskaTxt));
 		let zahtjev = new XMLHttpRequest();
 		zahtjev.open("POST", url, true);
 		zahtjev.onreadystatechange = function() {
